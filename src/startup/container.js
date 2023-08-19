@@ -16,7 +16,13 @@ const {
 } = require('../repositories');
 
 // Services
-const { HomeService, UserService } = require('../services');
+const {
+  HomeService,
+  UserService,
+  ArtistService,
+  AlbumService,
+  SongService,
+} = require('../services');
 
 // Controllers
 const { HomeController, UserController } = require('../controllers');
@@ -36,6 +42,9 @@ constainer
   .register({
     HomeService: asClass(HomeService).singleton(),
     UserService: asClass(UserService).singleton(),
+    ArtistService: asClass(ArtistService).singleton(),
+    AlbumService: asClass(AlbumService).singleton(),
+    SongService: asClass(SongService).singleton(),
   })
   .register({
     HomeController: asClass(HomeController.bind(HomeController)).singleton(),
