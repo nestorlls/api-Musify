@@ -6,7 +6,7 @@ require('express-async-errors');
 
 const { NotFoundModdleware, ErrorMiddleware } = require('../middlewares');
 
-module.exports = ({ HomeRoutes }) => {
+module.exports = ({ HomeRoutes, UserRoutes }) => {
   const router = express.Router();
   const apiRoutes = express.Router();
 
@@ -16,6 +16,7 @@ module.exports = ({ HomeRoutes }) => {
   apiRoutes.use(compression());
 
   apiRoutes.use('/home', HomeRoutes);
+  apiRoutes.use('/user', UserRoutes);
 
   router.use('/api/v1', apiRoutes);
   router.use(NotFoundModdleware);

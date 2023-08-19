@@ -1,4 +1,4 @@
-const { compareSync, genSalt, hashSync } = require('bcryptjs');
+const { compareSync, hashSync, genSaltSync } = require('bcryptjs');
 const mongoose = require('mongoose');
 const { Schema, model } = mongoose;
 
@@ -21,17 +21,17 @@ UserSchema.methods.comparePasswords = function (password) {
   return compareSync(password, this.password);
 };
 
-UserSchema.pre('save', (next) => {
+UserSchema.pre('save', function (next) {
   const user = this;
 
   if (!user.isModified('password')) {
     return next();
   }
 
-  const salt = genSalt(10);
+  const salt = genSaltSync(10);
   const passwordHashed = hashSync(user.password, salt);
   user.password = passwordHashed;
-  return next();
+  next();
 });
 
 const User = model('User', UserSchema);
