@@ -1,0 +1,9 @@
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+}
+
+module.exports = {
+  PORT: process.env.PORT,
+  MONGO_DB_URI: process.env.MONGO_DB_URI,
+  APPLICATION_NAME: process.env.APPLICATION_NAME,
+};
