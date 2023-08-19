@@ -4,6 +4,8 @@ const helmet = require('helmet');
 const compression = require('compression');
 require('express-async-errors');
 
+const { NotFoundModdleware, ErrorMiddleware } = require('../middlewares');
+
 module.exports = ({ HomeRoutes }) => {
   const router = express.Router();
   const apiRoutes = express.Router();
@@ -16,6 +18,8 @@ module.exports = ({ HomeRoutes }) => {
   apiRoutes.use('/home', HomeRoutes);
 
   router.use('/api/v1', apiRoutes);
+  router.use(NotFoundModdleware);
+  router.use(ErrorMiddleware);
 
   return router;
 };
