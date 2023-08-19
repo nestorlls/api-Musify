@@ -7,6 +7,14 @@ const { User, Artist, Album, Song } = require('../models');
 const config = require('../config');
 const app = require('.');
 
+// Repositories
+const {
+  UserRepository,
+  ArtistRepository,
+  AlbumRepository,
+  SongRepository,
+} = require('../repositories');
+
 // Services
 const { HomeService } = require('../services');
 
@@ -39,6 +47,12 @@ constainer
     Artist: asValue(Artist),
     Album: asValue(Album),
     Song: asValue(Song),
+  })
+  .register({
+    UserRepository: asClass(UserRepository).singleton(),
+    ArtistRepository: asClass(ArtistRepository).singleton(),
+    AlbumRepository: asClass(AlbumRepository).singleton(),
+    SongRepository: asClass(SongRepository).singleton(),
   });
 
 module.exports = constainer;
