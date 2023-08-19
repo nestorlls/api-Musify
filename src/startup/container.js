@@ -1,5 +1,8 @@
 const { createContainer, asClass, asValue, asFunction } = require('awilix');
 
+// Models
+const { User, Artist, Album, Song } = require('../models');
+
 // config
 const config = require('../config');
 const app = require('.');
@@ -30,6 +33,12 @@ constainer
   })
   .register({
     HomeRoutes: asFunction(HomeRoutes).singleton(),
+  })
+  .register({
+    User: asValue(User),
+    Artist: asValue(Artist),
+    Album: asValue(Album),
+    Song: asValue(Song),
   });
 
 module.exports = constainer;
