@@ -77,3 +77,5 @@ class AlbumService extends BaseService {
     }
   }
 }
+
+module.exports = AlbumService;
