@@ -25,7 +25,13 @@ const {
 } = require('../services');
 
 // Controllers
-const { HomeController, UserController } = require('../controllers');
+const {
+  HomeController,
+  UserController,
+  ArtistController,
+  AlbumController,
+  SongController,
+} = require('../controllers');
 
 // Routes
 const { HomeRoutes, UserRoutes } = require('../routes/index.routes');
@@ -49,6 +55,11 @@ constainer
   .register({
     HomeController: asClass(HomeController.bind(HomeController)).singleton(),
     UserController: asClass(UserController.bind(UserController)).singleton(),
+    ArtistController: asClass(
+      ArtistController.bind(ArtistController)
+    ).singleton(),
+    AlbumController: asClass(AlbumController.bind(AlbumController)).singleton(),
+    SongController: asClass(SongController.bind(SongController)).singleton(),
   })
   .register({
     HomeRoutes: asFunction(HomeRoutes).singleton(),
