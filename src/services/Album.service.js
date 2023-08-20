@@ -40,8 +40,6 @@ class AlbumService extends BaseService {
   }
 
   async getAllAlbums() {
-    this.isValidId({ id, message: 'Invalid id or id is required' });
-
     try {
       return await _albumRepository.getAll();
     } catch (error) {
