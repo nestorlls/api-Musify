@@ -34,7 +34,13 @@ const {
 } = require('../controllers');
 
 // Routes
-const { HomeRoutes, UserRoutes } = require('../routes/index.routes');
+const {
+  HomeRoutes,
+  UserRoutes,
+  ArtistRoutes,
+  AlbumRoutes,
+  SongRoutes,
+} = require('../routes/index.routes');
 const Routes = require('../routes');
 
 const constainer = createContainer();
@@ -64,6 +70,9 @@ constainer
   .register({
     HomeRoutes: asFunction(HomeRoutes).singleton(),
     UserRoutes: asFunction(UserRoutes).singleton(),
+    ArtistRoutes: asFunction(ArtistRoutes).singleton(),
+    AlbumRoutes: asFunction(AlbumRoutes).singleton(),
+    SongRoutes: asFunction(SongRoutes).singleton(),
   })
   .register({
     User: asValue(User),

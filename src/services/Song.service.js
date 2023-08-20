@@ -5,6 +5,7 @@ let _songRepository = null;
 
 class SongService extends BaseService {
   constructor({ SongRepository }) {
+    super(SongRepository);
     _songRepository = SongRepository;
   }
 
@@ -75,3 +76,5 @@ class SongService extends BaseService {
     }
   }
 }
+
+module.exports = SongService;
